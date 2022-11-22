@@ -72,12 +72,12 @@ conta_luz = float((input('Qual o valor da sua conta de Energia? ')))
 #inserir taxa de iluminação pública
 ip_luz = float((input('Qual o valor da sua Taxa de Iluminação Pública (IP)? ')))
 
-#calculando quantidade de painéis (media de kwh/30*FI*0,98)
-potencia_projeto = float((conta_luz*0.89))/(30*0.98*fator_irradiacao)
+#calculando a potencia do projeto (media de kwh/30*FI*0,98)
+potencia_projeto = float(((conta_luz-ip_luz)*0.89))/(30*0.98*fator_irradiacao)
 
-#calculando potencia kwp do sistema
-qtde_paineis = float((potencia_projeto/0.545))
+#calculando quantidade de paineis de acordo com a potencia
+qtde_paineis = round(float((potencia_projeto/0.545)))
 
 #calculando custo do projeto (4,9 R$/wp)
 custo_projeto = round((potencia_projeto*4900))
-print ('O custo do Projeto é de aproximadamente R$',custo_projeto)
+print ('O custo do Projeto é de aproximadamente R$',custo_projeto," e serão utilizados",qtde_paineis, "paineis de 545 wp.")
